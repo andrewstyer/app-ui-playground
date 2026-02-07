@@ -1,0 +1,12 @@
+# Symlinked apps (app content lives in their own repos)
+apps/narrativ
+
+# Dependencies
+node_modules/
+
+# Visual regression output
+screenshots/
+reports/
+
+# OS files
+.DS_Store
