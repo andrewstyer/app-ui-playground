@@ -48,6 +48,9 @@ const Navigation = {
 
     // Set default tab
     this.activeTab = config.defaultTab || (this.screenRegistry?.tabs?.[0]?.id || 'home');
+
+    // Render tab bar now that registry is set
+    this._renderTabBar();
   },
 
   // ============================================================

@@ -1,0 +1,12 @@
+{
+  "styles": [
+    "styles/app.css"
+  ],
+  "scripts": [
+    "data.js",
+    "screens/home.js",
+    "screens/list.js",
+    "screens/settings.js",
+    "config.js"
+  ]
+}
