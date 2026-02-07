@@ -19,15 +19,15 @@ open http://localhost:8080
 
 ## Usage
 
-### Default App (Narrativ)
+### Default App (Example)
 ```
 http://localhost:8080
 ```
 
 ### Specific App
 ```
-http://localhost:8080?app=narrativ
-http://localhost:8080?app=my-new-app
+http://localhost:8080?app=example
+http://localhost:8080?app=my-imported-app
 ```
 
 ## Directory Structure
@@ -43,22 +43,23 @@ app-ui-playground/
 │   └── app-shell.js        # Theme toggle, sheet system, utilities
 │
 ├── apps/                    # App-specific implementations
-│   └── narrativ/           # Narrativ health app
+│   └── example/            # Minimal example app
 │       ├── config.js       # Screen registry, app initialization
-│       ├── data.js         # Sample data (events, documents, tags)
+│       ├── data.js         # Sample data
 │       ├── screens/        # Screen renderers
-│       │   ├── dashboard.js
-│       │   ├── timeline.js
-│       │   ├── documents.js
-│       │   ├── narrative.js
-│       │   ├── tags.js
-│       │   ├── settings.js
-│       │   └── ...
+│       │   ├── home.js
+│       │   ├── list.js
+│       │   └── settings.js
 │       └── styles/         # App-specific CSS
-│           ├── screens.css
-│           └── documents.css
+│           └── app.css
+│
+├── scripts/                 # CLI tools
+│   ├── import-ios-app.js   # Import and scaffold from iOS project
+│   ├── sync-from-ios.js    # Sync tokens/screens from iOS
+│   └── visual-regression.js # Screenshot comparison
 │
 ├── index.html              # Entry point with app loader
+├── server.js               # Dev server with sync API
 └── README.md               # This file
 ```
 
@@ -322,16 +323,16 @@ When using the dev server (`node server.js`), click the **sync button** (↻) in
 
 ```bash
 # Dry run (preview changes)
-node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ --dry-run
+node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app --dry-run
 
 # Sync everything
-node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ
+node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app
 
 # Sync only design tokens
-node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ --tokens-only
+node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app --tokens-only
 
 # Sync only screen structure
-node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ --screens-only
+node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app --screens-only
 ```
 
 ### What Gets Synced
@@ -393,8 +394,7 @@ If you prefer manual setup:
 3. Add the app config to `server.js`:
    ```javascript
    const APP_CONFIGS = {
-     narrativ: { iosPath: '../narrativ/Narrativ' },
-     'my-app': { iosPath: '../my-app/MyApp' },  // Add your app here
+     'my-app': { iosPath: '../my-app/MyApp' },
    };
    ```
 4. Run sync via the button or CLI
@@ -407,23 +407,23 @@ Compare iOS Simulator screenshots with web playground screenshots to catch visua
 
 ```bash
 # Full comparison (captures iOS + web, then compares)
-node scripts/visual-regression.js --app narrativ --ios-project ../narrativ
+node scripts/visual-regression.js --app my-app --ios-project ../my-app
 
 # Just capture web screenshots (faster iteration)
-node scripts/visual-regression.js --app narrativ --web-only
+node scripts/visual-regression.js --app my-app --web-only
 
 # Compare existing screenshots
-node scripts/visual-regression.js --app narrativ --compare-only
+node scripts/visual-regression.js --app my-app --compare-only
 
 # Run after sync
-node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ --visual-test
+node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app --visual-test
 ```
 
 ### Options
 
 | Option | Description |
 |--------|-------------|
-| `--app <name>` | App name (default: narrativ) |
+| `--app <name>` | App name (required) |
 | `--ios-project <path>` | Path to iOS project root |
 | `--threshold <0-1>` | Pixel difference threshold (default: 0.1 = 10%) |
 | `--simulator <name>` | iOS Simulator name (default: "iPhone 16 Pro") |

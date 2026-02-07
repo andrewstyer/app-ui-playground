@@ -31,13 +31,11 @@ for (let i = 0; i < args.length; i++) {
 const ROOT = __dirname;
 
 // App configurations for sync
-// Add new apps here with their iOS source paths
+// Add your apps here with their iOS source paths
+// Example:
+//   'my-app': { iosPath: '../my-app/MyApp' },
 const APP_CONFIGS = {
-  narrativ: {
-    iosPath: '../narrativ/Narrativ',
-  },
-  // Add more apps as needed:
-  // 'my-app': { iosPath: '../my-app/MyApp' },
+  // Apps are added here by the import script or manually
 };
 
 // ============================================================

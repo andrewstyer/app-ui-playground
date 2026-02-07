@@ -24,29 +24,9 @@
   --color-warning: #ff9500;                       /* Color.orange */
   --color-success: #34c759;                       /* Color.green */
 
-  /* Event category colors */
-  --color-category-diagnosis: #ff3b30;            /* Color.red */
-  --color-category-appointment: #007aff;          /* Color.blue */
-  --color-category-symptom: #ff9500;              /* Color.orange */
-  --color-category-surgery: #af52de;              /* Color.purple */
-  --color-category-procedure: #5856d6;            /* Color.indigo */
-  --color-category-lab-result: #30b0c7;           /* Color.teal */
-  --color-category-immunization: #00c7be;         /* Color.mint */
-  --color-category-vital-sign: #ff2d55;           /* Color.pink */
-  --color-category-medication: #34c759;           /* Color.green */
-  --color-category-life-event: #cc9900;           /* Color(red: 0.8, green: 0.6, blue: 0.0) */
-  --color-category-other: #8e8e93;                /* Color.gray */
-
-  /* Event source colors */
-  --color-source-manual: #8e8e93;                 /* Color.gray */
-  --color-source-document: #007aff;               /* Color.blue */
-  --color-source-healthkit: #ff2d55;              /* Color.pink */
-
-  /* Opacity - badge-specific (not synced) */
-  --opacity-badge-background: 0.2;
-
-  /* AI features */
-  --color-ai-suggestion: #339ca6;                 /* Color(red: 0.2, green: 0.6, blue: 0.65) */
+  /* RGB variants for rgba() usage */
+  --color-accent-rgb: 0, 122, 255;
+  --color-foreground-secondary-rgb: 60, 60, 67;
 
   /* Typography - iOS system font stack */
   --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif;
@@ -68,45 +48,34 @@
   --font-label: 13px/18px var(--font-family);                 /* footnote */
 
   /* === SYNCED FROM iOS (START) === */
-  /* Spacing (from PrototypeTheme.swift) */
+  /* These tokens are synced from iOS via the sync script.
+     Default values below match iOS Human Interface Guidelines. */
+
+  /* Spacing */
   --spacing-xxs: 2px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  --spacing-content-margin-horizontal: 16px;
-  --spacing-content-margin-vertical: 20px;
-  --spacing-section-spacing: 24px;
 
-  /* Radii (from PrototypeTheme.swift) */
+  /* Radii */
   --radius-small: 4px;
   --radius-medium: 8px;
   --radius-large: 16px;
 
-  /* Sizes (from PrototypeTheme.swift) */
+  /* Sizes */
   --size-icon-small: 16px;
-  --size-icon-button: 28px;
-  --size-icon-button-large: 36px;
-  --size-icon-large: 48px;
-  --size-icon-xlarge: 60px;
+  --size-icon-medium: 24px;
+  --size-icon-large: 32px;
   --size-touch-target: 44px;
-  --size-hero-icon: 64px;
-  --size-category-icon: 24px;
-  --size-thumbnail-width: 44px;
-  --size-thumbnail-height: 56px;
-  --size-event-dot: 12px;
-  --size-icon-medium: 32px;
-  --size-swimlane-height: 60px;
-  --size-event-bar-height: 24px;
-  --size-time-axis-height: 44px;
 
-  /* Motion (from PrototypeTheme.swift) */
+  /* Motion */
   --motion-quick: 0.15s;
   --motion-standard: 0.3s;
   --motion-slow: 0.5s;
 
-  /* Opacity (from PrototypeTheme.swift) */
+  /* Opacity */
   --opacity-subtle: 0.1;
   --opacity-medium: 0.5;
   --opacity-strong: 0.8;
@@ -139,25 +108,9 @@
     --color-warning: #ff9f0a;                       /* Color.orange (dark) */
     --color-success: #30d158;                       /* Color.green (dark) */
 
-    /* Event category colors (dark mode variants) */
-    --color-category-diagnosis: #ff453a;
-    --color-category-appointment: #0a84ff;
-    --color-category-symptom: #ff9f0a;
-    --color-category-surgery: #bf5af2;
-    --color-category-procedure: #5e5ce6;
-    --color-category-lab-result: #40c8e0;
-    --color-category-immunization: #63e6e2;
-    --color-category-vital-sign: #ff375f;
-    --color-category-medication: #30d158;
-    --color-category-life-event: #cc9900;
-    --color-category-other: #98989d;
-
-    /* Event source colors (dark mode variants) */
-    --color-source-manual: #98989d;
-    --color-source-document: #0a84ff;
-    --color-source-healthkit: #ff375f;
-
-    --color-ai-suggestion: #4db8c2;
+    /* RGB variants for rgba() usage */
+    --color-accent-rgb: 10, 132, 255;
+    --color-foreground-secondary-rgb: 235, 235, 245;
 
     --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.3);
     --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -185,23 +138,9 @@
   --color-warning: #ff9f0a;
   --color-success: #30d158;
 
-  --color-category-diagnosis: #ff453a;
-  --color-category-appointment: #0a84ff;
-  --color-category-symptom: #ff9f0a;
-  --color-category-surgery: #bf5af2;
-  --color-category-procedure: #5e5ce6;
-  --color-category-lab-result: #40c8e0;
-  --color-category-immunization: #63e6e2;
-  --color-category-vital-sign: #ff375f;
-  --color-category-medication: #30d158;
-  --color-category-life-event: #cc9900;
-  --color-category-other: #98989d;
-
-  --color-source-manual: #98989d;
-  --color-source-document: #0a84ff;
-  --color-source-healthkit: #ff375f;
-
-  --color-ai-suggestion: #4db8c2;
+  /* RGB variants for rgba() usage */
+  --color-accent-rgb: 10, 132, 255;
+  --color-foreground-secondary-rgb: 235, 235, 245;
 
   --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.3);
   --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.5);

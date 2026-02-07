@@ -5,10 +5,10 @@
  * Syncs screen structure and design tokens from the iOS app to the playground.
  *
  * Usage:
- *   node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ
- *   node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ --dry-run
- *   node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ --tokens-only
- *   node scripts/sync-from-ios.js --ios-path ../narrativ/Narrativ --app narrativ --screens-only
+ *   node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app
+ *   node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app --dry-run
+ *   node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app --tokens-only
+ *   node scripts/sync-from-ios.js --ios-path ../my-app/MyApp --app my-app --screens-only
  */
 
 const fs = require('fs');
@@ -21,7 +21,7 @@ const path = require('path');
 const args = process.argv.slice(2);
 const config = {
   iosPath: null,
-  appName: 'narrativ',
+  appName: null,
   dryRun: false,
   tokensOnly: false,
   screensOnly: false,
@@ -53,8 +53,8 @@ for (let i = 0; i < args.length; i++) {
 Usage: sync-from-ios.js [options]
 
 Options:
-  --ios-path <path>   Path to the iOS app's source directory (e.g., ../narrativ/Narrativ)
-  --app <name>        App name in the playground (default: narrativ)
+  --ios-path <path>   Path to the iOS app's source directory (e.g., ../my-app/MyApp)
+  --app <name>        App name in the playground (required)
   --dry-run           Show what would change without making changes
   --tokens-only       Only sync design tokens (theme.css)
   --screens-only      Only sync screen structure (config.js)
@@ -67,6 +67,11 @@ Options:
 
 if (!config.iosPath) {
   console.error('Error: --ios-path is required');
+  process.exit(1);
+}
+
+if (!config.appName) {
+  console.error('Error: --app is required');
   process.exit(1);
 }
 
