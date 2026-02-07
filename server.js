@@ -286,12 +286,82 @@ function handleRequest(req, res) {
 }
 
 // ============================================================
+// Skill Recommendations
+// ============================================================
+
+const RECOMMENDED_SKILLS = [
+  {
+    name: 'frontend-design',
+    description: 'Create distinctive, production-grade frontend interfaces',
+    url: 'https://github.com/anthropics/claude-code-skills',
+  },
+  {
+    name: 'interaction-design',
+    description: 'Microinteractions, motion design, and transitions',
+    url: 'https://github.com/anthropics/claude-code-skills',
+  },
+  {
+    name: 'baseline-ui',
+    description: 'Enforces UI baseline to prevent AI-generated slop',
+    url: 'https://github.com/anthropics/claude-code-skills',
+  },
+  {
+    name: 'ui-ux-pro-max',
+    description: 'Design intelligence with styles, palettes, and fonts',
+    url: 'https://github.com/anthropics/claude-code-skills',
+  },
+];
+
+function checkInstalledSkills() {
+  const homeDir = process.env.HOME || process.env.USERPROFILE;
+  const skillsDir = path.join(homeDir, '.claude', 'skills');
+
+  const missing = [];
+  const installed = [];
+
+  for (const skill of RECOMMENDED_SKILLS) {
+    const skillPath = path.join(skillsDir, skill.name);
+    if (fs.existsSync(skillPath)) {
+      installed.push(skill);
+    } else {
+      missing.push(skill);
+    }
+  }
+
+  return { installed, missing };
+}
+
+function printSkillRecommendations() {
+  const { installed, missing } = checkInstalledSkills();
+
+  if (missing.length === 0) {
+    console.log('  ✓ All recommended UI skills installed\n');
+    return;
+  }
+
+  console.log('  Recommended Claude Code skills for UI work:\n');
+
+  for (const skill of missing) {
+    console.log(`    ○ ${skill.name}`);
+    console.log(`      ${skill.description}`);
+  }
+
+  console.log('\n  Install with: /install-skill <name>');
+  console.log(`  Or browse: ${RECOMMENDED_SKILLS[0].url}\n`);
+}
+
+// ============================================================
 // Start Server
 // ============================================================
 
 const server = http.createServer(handleRequest);
 
 server.listen(PORT, () => {
+  const appsConfigured = Object.keys(APP_CONFIGS);
+  const appsLine = appsConfigured.length > 0
+    ? appsConfigured.map(app => `║    - ${app.padEnd(50)}║`).join('\n')
+    : '║    (none - use import script to add an app)          ║';
+
   console.log(`
 ╔════════════════════════════════════════════════════════════╗
 ║              App UI Playground Dev Server                  ║
@@ -300,9 +370,12 @@ server.listen(PORT, () => {
 ║  Local:   http://localhost:${PORT.toString().padEnd(28)}║
 ║                                                            ║
 ║  Apps configured for sync:                                 ║
-${Object.keys(APP_CONFIGS).map(app => `║    - ${app.padEnd(50)}║`).join('\n')}
+${appsLine}
 ║                                                            ║
-║  Press Ctrl+C to stop                                      ║
 ╚════════════════════════════════════════════════════════════╝
 `);
+
+  printSkillRecommendations();
+
+  console.log('  Press Ctrl+C to stop\n');
 });

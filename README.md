@@ -2,6 +2,19 @@
 
 A standalone utility for prototyping iOS-style app UIs in the browser. Create high-fidelity mockups with working navigation, dark mode support, and device viewport simulation.
 
+## Recommended Claude Code Skills
+
+For the best UI prototyping experience, install these skills:
+
+```bash
+/install-skill frontend-design      # Distinctive, production-grade interfaces
+/install-skill interaction-design   # Microinteractions and motion design
+/install-skill baseline-ui          # Prevents AI-generated UI slop
+/install-skill ui-ux-pro-max        # Design intelligence with styles and palettes
+```
+
+The dev server will check for these skills on startup and remind you if any are missing.
+
 ## Quick Start
 
 ```bash
