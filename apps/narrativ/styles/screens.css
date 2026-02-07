@@ -1,0 +1,1598 @@
+/* Screen-specific styles */
+
+/* ============================================================
+   Dashboard - matches DashboardView.swift layout exactly
+   ============================================================ */
+
+/**
+ * Main dashboard container
+ * Swift: VStack(alignment: .leading, spacing: lg).padding(md)
+ */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+}
+
+/**
+ * Greeting section
+ * Swift: Text("\(greeting), \(userName)")
+ *        .font(displayLarge)
+ *        .foregroundStyle(foreground)
+ *        .padding(.bottom, sm)
+ */
+.dashboard-greeting {
+  padding-bottom: var(--spacing-sm);
+}
+
+.dashboard-greeting-text {
+  font: var(--font-display-large);
+  color: var(--color-foreground);
+}
+
+/**
+ * Section container
+ * Swift: VStack(alignment: .leading, spacing: md)
+ */
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/**
+ * Section header
+ * Swift: Text(header).font(headline).foregroundStyle(foreground)
+ */
+.dashboard-section-header {
+  font: var(--font-headline);
+  color: var(--color-foreground);
+}
+
+/**
+ * Stats container with border
+ * Swift: LazyVGrid.padding(md).overlay(RoundedRectangle.stroke(border, 1px))
+ */
+.dashboard-stats-container {
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-large);
+}
+
+/**
+ * Stats grid
+ * Swift: LazyVGrid(3 columns, spacing: sm)
+ * Responsive: auto-fit with minimum width
+ */
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(90px, 100%), 1fr));
+  gap: var(--spacing-sm);
+}
+
+/**
+ * Stat card (compact mode)
+ * Swift: VStack(alignment: .center, spacing: xs)
+ *        .frame(maxWidth: .infinity)
+ *        .padding(sm)
+ */
+.dashboard-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+}
+
+/**
+ * Stat icon
+ * Swift: Image(icon).font(body).foregroundStyle(color)
+ */
+.dashboard-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ * Stat value
+ * Swift: Text(count).font(title).fontWeight(.bold)
+ */
+.dashboard-stat-value {
+  font: var(--font-title);
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+
+/**
+ * Stat label
+ * Swift: Text(title).font(caption).foregroundStyle(foregroundSecondary).lineLimit(1)
+ */
+.dashboard-stat-label {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**
+ * Review card
+ * Swift: HStack.padding(md).background(backgroundSecondary)
+ *        .clipShape(RoundedRectangle(cornerRadius: medium))
+ */
+.dashboard-review-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-medium);
+  cursor: pointer;
+  transition: background var(--motion-quick);
+}
+
+.dashboard-review-card:active {
+  background: var(--color-background-tertiary);
+}
+
+/**
+ * Review icon
+ * Swift: Image("tag.square").font(titleMedium).foregroundStyle(accent)
+ */
+.dashboard-review-icon {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ * Review content
+ * Swift: VStack(alignment: .leading, spacing: xs)
+ */
+.dashboard-review-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+}
+
+/**
+ * Review title
+ * Swift: Text(documentsNeedReview).font(body).foregroundStyle(foreground)
+ */
+.dashboard-review-title {
+  font: var(--font-body);
+  color: var(--color-foreground);
+}
+
+/**
+ * Review subtitle
+ * Swift: Text(reviewSuggestedTags).font(caption).foregroundStyle(foregroundSecondary)
+ */
+.dashboard-review-subtitle {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Review chevron
+ * Swift: Image("chevron.right").foregroundStyle(foregroundTertiary)
+ */
+.dashboard-review-chevron {
+  color: var(--color-foreground-tertiary);
+  flex-shrink: 0;
+}
+
+/**
+ * Navigation grid
+ * Swift: LazyVGrid(2 columns, spacing: md)
+ * Always 2 columns that stretch to fill width (matches iOS)
+ */
+.dashboard-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+/**
+ * Navigation card
+ * Swift: VStack(spacing: md)
+ *        .frame(maxWidth: .infinity)
+ *        .padding(.vertical, lg)
+ *        .background(backgroundSecondary)
+ *        .clipShape(RoundedRectangle(cornerRadius: medium))
+ *        .shadow(subtle)
+ */
+.dashboard-nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-subtle);
+  cursor: pointer;
+  transition: background var(--motion-quick);
+}
+
+.dashboard-nav-card:active {
+  background: var(--color-background-tertiary);
+}
+
+/**
+ * Navigation icon
+ * Swift: Image(icon).font(title).foregroundStyle(color)
+ */
+.dashboard-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ * Navigation title
+ * Swift: Text(title).font(bodySecondary).fontWeight(.medium)
+ */
+.dashboard-nav-title {
+  font: var(--font-body-secondary);
+  font-weight: 500;
+  color: var(--color-foreground);
+}
+
+/**
+ * Quick action row
+ * Swift: HStack.padding(md).background(backgroundSecondary)
+ *        .clipShape(RoundedRectangle(cornerRadius: medium))
+ */
+.dashboard-quick-action {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-medium);
+  cursor: pointer;
+  transition: background var(--motion-quick);
+}
+
+.dashboard-quick-action:active {
+  background: var(--color-background-tertiary);
+}
+
+/**
+ * Quick action icon
+ * Swift: Image(icon).font(titleMedium).foregroundStyle(color)
+ */
+.dashboard-quick-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ * Quick action content
+ * Swift: VStack(alignment: .leading, spacing: xs)
+ */
+.dashboard-quick-action-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+}
+
+/**
+ * Quick action title
+ * Swift: Text(title).font(body).foregroundStyle(foreground)
+ */
+.dashboard-quick-action-title {
+  font: var(--font-body);
+  color: var(--color-foreground);
+}
+
+/**
+ * Quick action subtitle
+ * Swift: Text(subtitle).font(caption).foregroundStyle(foregroundSecondary)
+ */
+.dashboard-quick-action-subtitle {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Quick action chevron
+ * Swift: Image("chevron.right").foregroundStyle(foregroundTertiary)
+ */
+.dashboard-quick-action-chevron {
+  color: var(--color-foreground-tertiary);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Legacy Dashboard Styles (kept for backward compatibility)
+   ============================================================ */
+
+/* Dashboard greeting animation */
+.greeting-text {
+  background: linear-gradient(135deg, var(--color-foreground) 0%, var(--color-foreground-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Timeline connector line between events */
+.event-row + .event-row .event-dot::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: var(--color-border-subtle);
+  top: calc(-1 * var(--spacing-sm) - 6px);
+  bottom: calc(100% - 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.event-row {
+  position: relative;
+}
+
+.event-dot {
+  position: relative;
+}
+
+/* Document preview placeholder */
+.doc-tile-preview,
+.detail-hero + .detail-section {
+  position: relative;
+}
+
+/* ============================================================
+   Narrative/Story Screen - Chapter List
+   ============================================================ */
+
+/**
+ * Narrative screen wrapper - flex container for header + scrollable list
+ */
+.narrative-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/**
+ * Chapter list container - plain list style
+ * Matches ChapterListNavigable with listStyle(.plain)
+ */
+.chapter-list {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/**
+ * Chapter row - tappable row with chevron
+ * Matches ChapterRowCompact
+ */
+.chapter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-content-h);
+  cursor: pointer;
+  transition: background var(--motion-quick);
+  border-bottom: 0.5px solid var(--color-border-subtle);
+}
+
+.chapter-row:active {
+  background: var(--color-background-secondary);
+}
+
+.chapter-row-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.chapter-row-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.chapter-row-title {
+  font: var(--font-headline);
+  color: var(--color-foreground);
+}
+
+.chapter-row-approach {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font: var(--font-caption);
+  color: var(--color-foreground-tertiary);
+}
+
+.chapter-row-chevron {
+  color: var(--color-foreground-tertiary);
+  flex-shrink: 0;
+  padding-top: var(--spacing-xs);
+}
+
+/**
+ * Linked items - indented list of events/documents
+ * Matches the expandable linked items in ChapterRowCompact
+ */
+.chapter-linked-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding-left: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.chapter-linked-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+.chapter-linked-item-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**
+ * Chapter detail view (pushed view)
+ */
+.chapter-detail-content {
+  padding: var(--spacing-md) var(--spacing-content-h);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chapter-detail-approach {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font: var(--font-caption);
+  color: var(--color-foreground-tertiary);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Narrative reading view */
+.chapter-content {
+  animation: fadeIn var(--motion-standard) ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Settings icon colors by section */
+.settings-section:nth-child(2) .settings-row-icon {
+  background: color-mix(in srgb, var(--color-success) 15%, transparent);
+  color: var(--color-success);
+}
+
+.settings-section:nth-child(3) .settings-row-icon {
+  background: color-mix(in srgb, var(--color-category-surgery) 15%, transparent);
+  color: var(--color-category-surgery);
+}
+
+.settings-section:nth-child(4) .settings-row-icon {
+  background: color-mix(in srgb, var(--color-warning) 15%, transparent);
+  color: var(--color-warning);
+}
+
+.settings-section:nth-child(5) .settings-row-icon {
+  background: color-mix(in srgb, var(--color-ai-suggestion) 15%, transparent);
+  color: var(--color-ai-suggestion);
+}
+
+.settings-section:nth-child(6) .settings-row-icon {
+  background: color-mix(in srgb, var(--color-destructive) 15%, transparent);
+  color: var(--color-destructive);
+}
+
+/* Lanes view styling */
+.lanes-view {
+  min-height: 300px;
+}
+
+.lane-bar:hover {
+  opacity: 0.85;
+}
+
+/* Card hover/active states */
+.stat-card:hover,
+.nav-card:hover {
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Smooth transitions for view mode switching */
+.card-grid,
+.doc-row,
+.event-row {
+  animation: fadeIn var(--motion-quick) ease-out;
+}
+
+/* Sheet slide-up animation */
+.sheet-container {
+  will-change: transform;
+}
+
+/* Review card pulse effect */
+.review-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure proper scrolling within screen container */
+
+/* Active states for mobile-feel */
+.chip:active {
+  transform: scale(0.95);
+}
+
+.tab-item:active {
+  transform: scale(0.9);
+}
+
+.segment:active {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   Welcome/Onboarding Screen
+   ============================================================ */
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-background);
+  position: relative;
+}
+
+.welcome-skip {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 10;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: color-mix(in srgb, var(--color-foreground-tertiary) 15%, transparent);
+  border: none;
+  border-radius: 999px;
+  font: var(--font-body-secondary);
+  color: var(--color-foreground-secondary);
+  cursor: pointer;
+  transition: opacity var(--motion-quick);
+}
+
+.welcome-skip:active {
+  opacity: 0.6;
+}
+
+.welcome-pages {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.welcome-page {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  padding-top: calc(var(--spacing-xl) + var(--size-touch-target));
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform var(--motion-standard), opacity var(--motion-standard);
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+}
+
+.welcome-page.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+}
+
+.welcome-illustration {
+  flex: 0 0 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  border-radius: var(--radius-large);
+  margin-bottom: var(--spacing-lg);
+  min-height: 180px;
+}
+
+.welcome-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.welcome-headline {
+  font: var(--font-title-large);
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.welcome-body {
+  font: var(--font-body);
+  color: var(--color-foreground-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.welcome-body strong {
+  font: var(--font-headline);
+  color: var(--color-foreground);
+}
+
+.welcome-footer {
+  flex-shrink: 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  padding-bottom: max(var(--spacing-lg), env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.welcome-dots {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.welcome-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-foreground-tertiary);
+  cursor: pointer;
+  transition: background var(--motion-quick);
+}
+
+.welcome-dot.active {
+  background: var(--color-accent);
+}
+
+.welcome-get-started {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border: none;
+  border-radius: var(--radius-medium);
+  font: var(--font-headline);
+  cursor: pointer;
+  min-height: var(--size-touch-target);
+  transition: opacity var(--motion-quick);
+}
+
+.welcome-get-started:active {
+  opacity: 0.8;
+}
+
+/* Welcome illustration variants */
+.welcome-illustration-cohesion {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+.welcome-cohesion-circle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 2px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  border-radius: 50%;
+}
+
+.welcome-illustration-capabilities {
+  display: flex;
+  gap: var(--spacing-xl);
+  color: var(--color-accent);
+}
+
+.welcome-capability {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.welcome-capability span {
+  font: var(--font-caption);
+}
+
+.welcome-illustration-paths {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  color: var(--color-accent);
+}
+
+.welcome-path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+
+.welcome-path span {
+  font: var(--font-caption);
+}
+
+.welcome-path-or {
+  font: var(--font-body);
+  color: var(--color-foreground-secondary);
+}
+
+.welcome-illustration-sample {
+  color: var(--color-accent);
+}
+
+.welcome-sample-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  border: 2px dashed color-mix(in srgb, var(--color-accent) 30%, transparent);
+  border-radius: var(--radius-medium);
+}
+
+.welcome-sample-box span {
+  font: var(--font-caption);
+}
+
+.welcome-illustration-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--color-accent);
+}
+
+.welcome-actions-row {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.welcome-action-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font: var(--font-body);
+}
+
+/* ============================================================
+   Loading Screen
+   ============================================================ */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--spacing-xl);
+  background: var(--color-background);
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-align: center;
+}
+
+.loading-icon {
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+}
+
+.loading-status {
+  font: var(--font-headline);
+  color: var(--color-foreground);
+}
+
+.loading-progress-text {
+  font: var(--font-body-secondary);
+  color: var(--color-foreground-secondary);
+}
+
+.loading-progress-bar {
+  width: 200px;
+  height: 4px;
+  background: var(--color-background-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: var(--spacing-sm);
+}
+
+.loading-progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 2px;
+  transition: width var(--motion-standard) ease-out;
+}
+
+/* ============================================================
+   Document Viewer Screen
+   ============================================================ */
+
+.document-preview-area {
+  height: 180px;
+  background: var(--color-background-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  color: var(--color-foreground-tertiary);
+  position: relative;
+}
+
+.document-preview-label {
+  font: var(--font-caption);
+  color: var(--color-foreground-tertiary);
+}
+
+.detail-hero-date,
+.detail-hero-provider {
+  font: var(--font-body-secondary);
+  color: var(--color-foreground-secondary);
+}
+
+.detail-description {
+  font: var(--font-body);
+  color: var(--color-foreground);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ============================================================
+   Tag Detail Screen
+   ============================================================ */
+
+.tag-detail-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-large);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag-detail-description {
+  font: var(--font-body-secondary);
+  color: var(--color-foreground-secondary);
+  text-align: center;
+}
+
+.empty-section-text {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+/* ============================================================
+   Timeline - matches TimelineView.swift, TimelineEventRow.swift,
+   CardGridView.swift, LanesView.swift
+   ============================================================ */
+
+/**
+ * Timeline screen container
+ */
+.timeline-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/**
+ * Timeline navigation bar with principal segmented control
+ * Swift: .toolbar { ToolbarItem(placement: .principal) { viewModePicker } }
+ */
+.timeline-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-content-h);
+  min-height: var(--size-touch-target);
+}
+
+.timeline-nav-spacer {
+  min-width: var(--size-touch-target);
+}
+
+.timeline-nav-actions {
+  display: flex;
+  align-items: center;
+  min-width: var(--size-touch-target);
+  justify-content: flex-end;
+}
+
+/**
+ * View mode picker (segmented control in center)
+ * Swift: Picker.pickerStyle(.segmented).frame(width: 120)
+ */
+.timeline-view-mode-picker {
+  display: flex;
+  background: var(--color-background-tertiary);
+  border-radius: var(--radius-medium);
+  padding: 2px;
+}
+
+.timeline-view-mode-segment {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  border: none;
+  background: transparent;
+  border-radius: calc(var(--radius-medium) - 2px);
+  cursor: pointer;
+  color: var(--color-foreground-secondary);
+  transition: all var(--motion-quick);
+  min-height: 28px;
+}
+
+.timeline-view-mode-segment.active {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  box-shadow: var(--shadow-subtle);
+}
+
+.timeline-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-touch-target);
+  height: var(--size-touch-target);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-accent);
+}
+
+/**
+ * Time Scale Control (for Card/Lanes modes)
+ * Swift: TimeScaleControl.padding(.horizontal, md).padding(.vertical, sm).background(backgroundSecondary)
+ */
+.time-scale-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-background-secondary);
+}
+
+.time-scale-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.time-scale-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: transparent;
+  border: none;
+  font: var(--font-body);
+  color: var(--color-foreground);
+  cursor: pointer;
+}
+
+.time-scale-range {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+.time-scale-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.time-scale-zoom-percent {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+  min-width: 44px;
+  text-align: right;
+}
+
+.time-scale-zoom-percent.disabled {
+  color: var(--color-foreground-tertiary);
+  opacity: 0.5;
+}
+
+.time-scale-zoom-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.time-scale-zoom-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-foreground-secondary);
+}
+
+.time-scale-zoom-btn:disabled {
+  color: var(--color-foreground-tertiary);
+  cursor: not-allowed;
+}
+
+/**
+ * Filter Bar - matches FilterBar.swift
+ * Swift: ScrollView(.horizontal).padding(.horizontal, md).padding(.vertical, sm)
+ */
+.timeline-filter-bar {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+  background: var(--color-background);
+}
+
+.timeline-filter-scroll {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+}
+
+.timeline-filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/**
+ * Picker Chip - matches PickerChip.swift
+ */
+.filter-picker-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  border-radius: 999px;
+  font: var(--font-caption);
+  color: var(--color-accent);
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: var(--size-touch-target);
+  transition: all var(--motion-quick);
+}
+
+.filter-picker-chip:not(.active) {
+  background: color-mix(in srgb, var(--color-background-secondary) 8%, transparent);
+  border-color: var(--color-border-subtle);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Filter Chip - matches FilterChip.swift
+ */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: color-mix(in srgb, var(--color-background-secondary) 8%, transparent);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: var(--size-touch-target);
+  transition: all var(--motion-quick);
+}
+
+.filter-chip.selected {
+  background: color-mix(in srgb, var(--chip-color, var(--color-accent)) 20%, transparent);
+  border-color: color-mix(in srgb, var(--chip-color, var(--color-accent)) 40%, transparent);
+  color: var(--chip-color, var(--color-accent));
+}
+
+.filter-divider {
+  width: 1px;
+  height: var(--spacing-lg);
+  background: var(--color-border);
+  margin: 0 var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.timeline-density-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-touch-target);
+  height: var(--size-touch-target);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-foreground-secondary);
+  flex-shrink: 0;
+  padding-right: var(--spacing-md);
+}
+
+.timeline-divider {
+  height: 0.5px;
+  background: var(--color-border);
+}
+
+/**
+ * Timeline Content Container
+ */
+.timeline-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/**
+ * Timeline List View - matches grouped List in TimelineView.swift
+ */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+ * Section Header - matches List Section header
+ * Swift: Text(date).font(caption).foregroundStyle(foregroundSecondary)
+ */
+.timeline-section-header {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+  padding: var(--spacing-md) var(--spacing-content-h) var(--spacing-sm);
+  background: var(--color-background);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/**
+ * Timeline Event Row - matches TimelineEventRow.swift
+ * Swift: HStack(alignment: .top, spacing: md)
+ */
+.timeline-event-row {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-content-h);
+  cursor: pointer;
+  transition: background var(--motion-quick);
+  align-items: flex-start;
+}
+
+.timeline-event-row:active {
+  background: var(--color-background-secondary);
+}
+
+/**
+ * Event Dot - matches Circle in TimelineEventRow
+ * Swift: Circle().fill(category.color).frame(width: 12, height: 12).padding(.top, xs)
+ */
+.timeline-event-dot {
+  width: var(--size-event-dot);
+  height: var(--size-event-dot);
+  border-radius: 50%;
+  margin-top: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.timeline-event-row-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/**
+ * Event Date - Swift: Text(dateRange.formatted()).font(caption).foregroundStyle(foregroundSecondary)
+ */
+.timeline-event-date {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Event Title - Swift: Text(title).font(headline) or .font(body) in dense mode
+ */
+.timeline-event-title {
+  font: var(--font-headline);
+  color: var(--color-foreground);
+}
+
+/**
+ * Event Badges container - matches FlowLayout in TimelineEventRow
+ */
+.timeline-event-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+/**
+ * Badge - matches CategoryBadge, TypeBadge, SourceBadge
+ */
+.timeline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xxs) var(--spacing-sm);
+  border-radius: var(--radius-small);
+  font: var(--font-caption);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/**
+ * Card Grid View - matches CardGridView.swift
+ */
+.timeline-card-grid-container {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-card-year-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/**
+ * Year Marker - matches TimeAxisMarker
+ * Swift: HStack(spacing: sm) { Text(year).font(title3).fontWeight(.semibold) Rectangle().fill(borderSubtle).frame(height: 1) }
+ */
+.timeline-year-marker {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.timeline-year-text {
+  font: var(--font-title3);
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+.timeline-year-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-subtle);
+}
+
+/**
+ * Card Grid - matches LazyVGrid with adaptive columns
+ * Responsive: uses minmax with min() to handle small screens
+ */
+.timeline-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: var(--spacing-md);
+}
+
+/**
+ * Timeline Card - matches TimelineCardView.swift
+ * Swift: VStack(alignment: .leading, spacing: xs).padding(md).background(backgroundSecondary).clipShape(RoundedRectangle(cornerRadius: medium))
+ */
+.timeline-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-medium);
+  cursor: pointer;
+  transition: opacity var(--motion-quick);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-card:active {
+  opacity: 0.8;
+}
+
+/**
+ * Card Header - HStack with dot and title
+ */
+.timeline-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.timeline-card-dot {
+  width: var(--size-event-dot);
+  height: var(--size-event-dot);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timeline-card-title {
+  font: var(--font-headline);
+  color: var(--color-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/**
+ * Card Date with Ongoing Badge
+ */
+.timeline-card-date {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Ongoing Badge - matches OngoingBadge
+ * Swift: Text("Ongoing").font(captionSecondary).padding(.horizontal, sm).padding(.vertical, xxs).background(accent.opacity(badgeBackgroundOpacity)).foregroundStyle(accent).clipShape(Capsule())
+ */
+.timeline-ongoing-badge {
+  font: var(--font-caption-secondary);
+  padding: var(--spacing-xxs) var(--spacing-sm);
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  color: var(--color-accent);
+  border-radius: 999px;
+}
+
+/**
+ * Card Description
+ * Swift: Text(description).font(body).lineLimit(3)
+ */
+.timeline-card-description {
+  font: var(--font-body);
+  color: var(--color-foreground);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/**
+ * Card Footer - matches footer ViewBuilder
+ */
+.timeline-card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.timeline-card-attachment {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Tag Pill - matches TagPill
+ */
+.timeline-tag-pill {
+  font: var(--font-caption-secondary);
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  border-radius: 999px;
+}
+
+.timeline-card-more-tags {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Ongoing Gradient Overlay
+ */
+.timeline-card-ongoing-gradient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  background: linear-gradient(to right, transparent, var(--color-background-secondary));
+  pointer-events: none;
+}
+
+/**
+ * Lanes View - matches LanesView.swift
+ */
+.timeline-lanes-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+/**
+ * Date Navigation Bar
+ * Swift: DateNavigationBar
+ */
+.timeline-date-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-bottom: 0.5px solid var(--color-border-subtle);
+}
+
+.timeline-date-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-icon-button);
+  height: var(--size-icon-button);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-foreground-secondary);
+}
+
+.timeline-date-nav-current {
+  font: var(--font-body);
+  color: var(--color-foreground);
+}
+
+/**
+ * Lanes Container
+ */
+.timeline-lanes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/**
+ * Single Lane - matches laneRow
+ * Swift: ZStack(alignment: .leading) with SwimlaneHeader
+ */
+.timeline-lane {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 0.5px solid var(--color-border-subtle);
+  min-height: var(--size-swimlane-height);
+}
+
+.timeline-lane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 140px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-background-secondary);
+  flex-shrink: 0;
+}
+
+.timeline-lane-label {
+  font: var(--font-caption);
+  font-weight: 600;
+}
+
+.timeline-lane-count {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+}
+
+/**
+ * Lane Bars Container
+ */
+.timeline-lane-bars {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  overflow-x: auto;
+  flex: 1;
+}
+
+/**
+ * Lane Bar - matches EventBar
+ * Swift: .frame(height: eventBarHeight).clipShape(RoundedRectangle(cornerRadius: small))
+ */
+.timeline-lane-bar {
+  height: var(--size-event-bar-height);
+  border-radius: var(--radius-small);
+  min-width: 60px;
+  max-width: 150px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-sm);
+  font: var(--font-caption-secondary);
+  color: var(--color-on-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.timeline-lane-bar:hover {
+  opacity: 0.85;
+}
+
+.timeline-lane-more {
+  font: var(--font-caption);
+  color: var(--color-foreground-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/**
+ * Timeline Minibar - matches TimelineMinibar
+ */
+.timeline-minibar {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-top: 0.5px solid var(--color-border-subtle);
+}
+
+.timeline-minibar-track {
+  height: 6px;
+  background: var(--color-background-tertiary);
+  border-radius: 3px;
+  position: relative;
+}
+
+.timeline-minibar-thumb {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 3px;
+  opacity: 0.7;
+}

@@ -1,0 +1,232 @@
+/* Design tokens mapped from PrototypeTheme.swift / DesignTokens.swift */
+
+:root {
+  /* Colors - Light mode (iOS system colors) */
+  --color-background: #ffffff;                    /* systemBackground */
+  --color-background-secondary: #f2f2f7;          /* secondarySystemBackground */
+  --color-background-tertiary: #ffffff;           /* tertiarySystemBackground */
+
+  --color-foreground: #000000;                    /* label */
+  --color-foreground-secondary: rgba(60, 60, 67, 0.6);   /* secondaryLabel */
+  --color-foreground-tertiary: rgba(60, 60, 67, 0.3);    /* tertiaryLabel */
+
+  --color-accent: #007aff;                        /* Color.blue */
+  --color-accent-secondary: rgba(0, 122, 255, 0.1);
+  --color-on-accent: #ffffff;
+
+  --color-border: rgba(60, 60, 67, 0.29);         /* separator */
+  --color-border-subtle: rgba(60, 60, 67, 0.145); /* separator @ 0.5 opacity */
+
+  --color-overlay: rgba(0, 0, 0, 0.4);
+  --color-scrim: rgba(0, 0, 0, 0.3);
+
+  --color-destructive: #ff3b30;                   /* Color.red */
+  --color-warning: #ff9500;                       /* Color.orange */
+  --color-success: #34c759;                       /* Color.green */
+
+  /* Event category colors */
+  --color-category-diagnosis: #ff3b30;            /* Color.red */
+  --color-category-appointment: #007aff;          /* Color.blue */
+  --color-category-symptom: #ff9500;              /* Color.orange */
+  --color-category-surgery: #af52de;              /* Color.purple */
+  --color-category-procedure: #5856d6;            /* Color.indigo */
+  --color-category-lab-result: #30b0c7;           /* Color.teal */
+  --color-category-immunization: #00c7be;         /* Color.mint */
+  --color-category-vital-sign: #ff2d55;           /* Color.pink */
+  --color-category-medication: #34c759;           /* Color.green */
+  --color-category-life-event: #cc9900;           /* Color(red: 0.8, green: 0.6, blue: 0.0) */
+  --color-category-other: #8e8e93;                /* Color.gray */
+
+  /* Event source colors */
+  --color-source-manual: #8e8e93;                 /* Color.gray */
+  --color-source-document: #007aff;               /* Color.blue */
+  --color-source-healthkit: #ff2d55;              /* Color.pink */
+
+  /* Opacity - badge-specific (not synced) */
+  --opacity-badge-background: 0.2;
+
+  /* AI features */
+  --color-ai-suggestion: #339ca6;                 /* Color(red: 0.2, green: 0.6, blue: 0.65) */
+
+  /* Typography - iOS system font stack */
+  --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  --font-family-rounded: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-mono: 'SF Mono', SFMono-Regular, Menlo, monospace;
+
+  /* Typography tokens matching iOS text styles */
+  --font-display-large: bold 34px/40px var(--font-family);    /* largeTitle bold */
+  --font-title-large: 34px/40px var(--font-family);           /* largeTitle */
+  --font-title-medium: 22px/28px var(--font-family);          /* title2 */
+  --font-title: 28px/34px var(--font-family);                 /* title */
+  --font-title3: 20px/25px var(--font-family);                /* title3 */
+  --font-headline: 600 17px/22px var(--font-family);          /* headline (semibold) */
+  --font-body: 17px/22px var(--font-family);                  /* body */
+  --font-body-secondary: 15px/20px var(--font-family);        /* subheadline */
+  --font-caption: 12px/16px var(--font-family);               /* caption */
+  --font-caption-secondary: 11px/14px var(--font-family);     /* caption2 */
+  --font-caption-small: 11px/14px var(--font-family);         /* caption2 (alias) */
+  --font-label: 13px/18px var(--font-family);                 /* footnote */
+
+  /* === SYNCED FROM iOS (START) === */
+  /* Spacing (from PrototypeTheme.swift) */
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-content-margin-horizontal: 16px;
+  --spacing-content-margin-vertical: 20px;
+  --spacing-section-spacing: 24px;
+
+  /* Radii (from PrototypeTheme.swift) */
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 16px;
+
+  /* Sizes (from PrototypeTheme.swift) */
+  --size-icon-small: 16px;
+  --size-icon-button: 28px;
+  --size-icon-button-large: 36px;
+  --size-icon-large: 48px;
+  --size-icon-xlarge: 60px;
+  --size-touch-target: 44px;
+  --size-hero-icon: 64px;
+  --size-category-icon: 24px;
+  --size-thumbnail-width: 44px;
+  --size-thumbnail-height: 56px;
+  --size-event-dot: 12px;
+  --size-icon-medium: 32px;
+  --size-swimlane-height: 60px;
+  --size-event-bar-height: 24px;
+  --size-time-axis-height: 44px;
+
+  /* Motion (from PrototypeTheme.swift) */
+  --motion-quick: 0.15s;
+  --motion-standard: 0.3s;
+  --motion-slow: 0.5s;
+
+  /* Opacity (from PrototypeTheme.swift) */
+  --opacity-subtle: 0.1;
+  --opacity-medium: 0.5;
+  --opacity-strong: 0.8;
+  /* === SYNCED FROM iOS (END) === */
+
+  /* Shadows */
+  --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode (system preference) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-background: #000000;                    /* systemBackground */
+    --color-background-secondary: #1c1c1e;          /* secondarySystemBackground */
+    --color-background-tertiary: #2c2c2e;           /* tertiarySystemBackground */
+
+    --color-foreground: #ffffff;                    /* label */
+    --color-foreground-secondary: rgba(235, 235, 245, 0.6);  /* secondaryLabel */
+    --color-foreground-tertiary: rgba(235, 235, 245, 0.3);   /* tertiaryLabel */
+
+    --color-accent: #0a84ff;                        /* Color.blue (dark) */
+    --color-accent-secondary: rgba(10, 132, 255, 0.1);
+
+    --color-border: rgba(84, 84, 88, 0.6);          /* separator */
+    --color-border-subtle: rgba(84, 84, 88, 0.3);   /* separator @ 0.5 opacity */
+
+    --color-destructive: #ff453a;                   /* Color.red (dark) */
+    --color-warning: #ff9f0a;                       /* Color.orange (dark) */
+    --color-success: #30d158;                       /* Color.green (dark) */
+
+    /* Event category colors (dark mode variants) */
+    --color-category-diagnosis: #ff453a;
+    --color-category-appointment: #0a84ff;
+    --color-category-symptom: #ff9f0a;
+    --color-category-surgery: #bf5af2;
+    --color-category-procedure: #5e5ce6;
+    --color-category-lab-result: #40c8e0;
+    --color-category-immunization: #63e6e2;
+    --color-category-vital-sign: #ff375f;
+    --color-category-medication: #30d158;
+    --color-category-life-event: #cc9900;
+    --color-category-other: #98989d;
+
+    /* Event source colors (dark mode variants) */
+    --color-source-manual: #98989d;
+    --color-source-document: #0a84ff;
+    --color-source-healthkit: #ff375f;
+
+    --color-ai-suggestion: #4db8c2;
+
+    --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Manual dark mode override */
+[data-theme="dark"] {
+  --color-background: #000000;
+  --color-background-secondary: #1c1c1e;
+  --color-background-tertiary: #2c2c2e;
+
+  --color-foreground: #ffffff;
+  --color-foreground-secondary: rgba(235, 235, 245, 0.6);
+  --color-foreground-tertiary: rgba(235, 235, 245, 0.3);
+
+  --color-accent: #0a84ff;
+  --color-accent-secondary: rgba(10, 132, 255, 0.1);
+
+  --color-border: rgba(84, 84, 88, 0.6);
+  --color-border-subtle: rgba(84, 84, 88, 0.3);
+
+  --color-destructive: #ff453a;
+  --color-warning: #ff9f0a;
+  --color-success: #30d158;
+
+  --color-category-diagnosis: #ff453a;
+  --color-category-appointment: #0a84ff;
+  --color-category-symptom: #ff9f0a;
+  --color-category-surgery: #bf5af2;
+  --color-category-procedure: #5e5ce6;
+  --color-category-lab-result: #40c8e0;
+  --color-category-immunization: #63e6e2;
+  --color-category-vital-sign: #ff375f;
+  --color-category-medication: #30d158;
+  --color-category-life-event: #cc9900;
+  --color-category-other: #98989d;
+
+  --color-source-manual: #98989d;
+  --color-source-document: #0a84ff;
+  --color-source-healthkit: #ff375f;
+
+  --color-ai-suggestion: #4db8c2;
+
+  --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.5);
+  --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Base reset and body styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font: var(--font-body);
+  font-family: var(--font-family);
+  color: var(--color-foreground);
+  background: var(--color-background);
+  overflow: hidden;
+  height: 100dvh;
+  width: 100%;
+}

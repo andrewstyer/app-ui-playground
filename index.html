@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>App UI Playground</title>
+
+  <!-- Core styles (framework) -->
+  <link rel="stylesheet" href="core/theme.css">
+  <link rel="stylesheet" href="core/components.css">
+
+  <!-- App-specific styles (loaded dynamically based on app parameter) -->
+  <script>
+    // Get app name from URL parameter, default to 'narrativ'
+    const APP_NAME = new URLSearchParams(location.search).get('app') || 'narrativ';
+
+    // Update page title
+    document.title = APP_NAME.charAt(0).toUpperCase() + APP_NAME.slice(1) + ' - UI Playground';
+
+    // Load app-specific CSS
+    function loadAppStyles(appName) {
+      const appStylesDir = `apps/${appName}/styles`;
+      const stylesheets = [];
+
+      // Add app-specific stylesheets
+      switch (appName) {
+        case 'narrativ':
+          stylesheets.push(`${appStylesDir}/screens.css`);
+          stylesheets.push(`${appStylesDir}/documents.css`);
+          break;
+        default:
+          // For new apps, just try to load a main.css
+          stylesheets.push(`${appStylesDir}/main.css`);
+      }
+
+      stylesheets.forEach(href => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.onerror = () => console.warn(`Could not load stylesheet: ${href}`);
+        document.head.appendChild(link);
+      });
+    }
+
+    loadAppStyles(APP_NAME);
+  </script>
+</head>
+<body>
+  <div id="app">
+    <div id="screen-container"></div>
+    <nav id="tab-bar"></nav>
+  </div>
+  <div id="sheet-overlay" class="sheet-overlay hidden"></div>
+  <div id="sheet-container" class="sheet-container hidden"></div>
+
+  <!-- Core scripts (framework) -->
+  <script src="core/icons.js"></script>
+  <script src="core/navigation.js"></script>
+  <script src="core/viewport-switcher.js"></script>
+  <script src="core/app-shell.js"></script>
+
+  <!-- App-specific scripts (loaded dynamically based on app parameter) -->
+  <script>
+    // Load app-specific scripts
+    function loadAppScripts(appName) {
+      const appDir = `apps/${appName}`;
+      const scripts = [];
+
+      switch (appName) {
+        case 'narrativ':
+          scripts.push(
+            `${appDir}/data.js`,
+            `${appDir}/screens/dashboard.js`,
+            `${appDir}/screens/timeline.js`,
+            `${appDir}/screens/documents.js`,
+            `${appDir}/screens/narrative.js`,
+            `${appDir}/screens/tags.js`,
+            `${appDir}/screens/settings.js`,
+            `${appDir}/screens/welcome.js`,
+            `${appDir}/screens/event-detail.js`,
+            `${appDir}/screens/document-viewer.js`,
+            `${appDir}/screens/tag-detail.js`,
+            `${appDir}/screens/loading.js`,
+            `${appDir}/config.js`  // Config must be last as it initializes the app
+          );
+          break;
+        default:
+          // For new apps, try to load standard files
+          scripts.push(
+            `${appDir}/data.js`,
+            `${appDir}/config.js`
+          );
+      }
+
+      // Load scripts sequentially to maintain dependency order
+      let index = 0;
+      function loadNext() {
+        if (index >= scripts.length) return;
+        const script = document.createElement('script');
+        script.src = scripts[index];
+        script.onload = () => {
+          index++;
+          loadNext();
+        };
+        script.onerror = () => {
+          console.warn(`Could not load script: ${scripts[index]}`);
+          index++;
+          loadNext();
+        };
+        document.body.appendChild(script);
+      }
+      loadNext();
+    }
+
+    // Start loading when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => loadAppScripts(APP_NAME));
+    } else {
+      loadAppScripts(APP_NAME);
+    }
+  </script>
+</body>
+</html>
